@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forever ❤️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle, rgba(50,50,50,1) 0%, rgba(0,0,0,1) 100%); /* تدرج لوني حديث */
+            color: white;
+        }
+        .poem {
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            z-index: 10;
+            position: relative;
+        }
+        .counter {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            z-index: 10;
+            position: relative;
+        }
+        .footer {
+            font-size: 18px;
+            margin-top: 30px;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* تساقط القلوب */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            animation: fall 5s infinite ease-in;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* تصميم الخلفية الحديثة */
+        .background-modern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            pointer-events: none; /* لضمان عدم التفاعل مع الخلفية */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Forever ❤️</h1>
+
+    <div class="poem">
+        يستقيم دربك بأخلاقك وذاتك<br>
+        كل طباعك يا هدى مطلب حياتي<br>
+        من جمالك روعتك غطت صفاتك<br>
+        ❤️ اسمك المزيون في قلبي وشفاتي
+    </div>
+
+    <div class="counter" id="counter"></div>
+
+    <div class="footer">
+        From 16-7-2024 To Forever ..❤️
+    </div>
+
+    <div class="background-modern"></div>
+
+    <script>
+        function updateCounter() {
+            const startDate = new Date("2024-07-16T06:32:00"); // تاريخ البداية مع الساعة 6:32 صباحاً
+            const currentDate = new Date(); // التاريخ الحالي
+            
+            // حساب الفرق بين التاريخين بالميلي ثانية
+            const timeDifference = currentDate - startDate;
+            
+            // تحويل الفرق إلى أيام وساعات ودقائق وثواني
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            // تحديث النص داخل الـ div
+            document.getElementById('counter').innerHTML = 
+                `مر ${days} يوم، ${hours} ساعة، ${minutes} دقيقة، و ${seconds} ثانية.`;
+        }
+
+        // تحديث العداد كل ثانية
+        setInterval(updateCounter, 1000);
+
+        // تشغيل العداد عند تحميل الصفحة
+        updateCounter();
+
+        // إضافة القلوب المتساقطة
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // يزيل القلب بعد انتهاء الحركة
+        }
+
+        // إنشاء القلوب المتساقطة بشكل متكرر
+        setInterval(createHeart, 300);
+    </script>
+
+</body>
+</html>
